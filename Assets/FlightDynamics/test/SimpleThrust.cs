@@ -5,8 +5,8 @@ namespace test
     public class SimpleThrust : MonoBehaviour
     {
         public Rigidbody rb;
-        public float thrustN = 8000f; 
-        public bool constantThrust = true;
+        public float maxThrust = 5000f; 
+        public Transform thrustPoint;
 
         void Reset()
         {
@@ -15,9 +15,9 @@ namespace test
 
         void FixedUpdate()
         {
-            if (!rb) return;
-            if (constantThrust)
-                rb.AddForce(transform.forward * thrustN, ForceMode.Force);
+
+            Vector3 thrust = maxThrust * 1 * transform.forward; // Always full throttle forward
+            rb.AddForceAtPosition(thrust, thrustPoint.position);
         }
     }
 }
