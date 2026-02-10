@@ -12,12 +12,26 @@ namespace FlightDynamics.Vers2
         [Range(0f, 1f)] public float throttle = 0f; // Throttle input (0 to 1)
 
         private float thrustMag;
+        public Transform propellerTransform;
+        public float maxPropRotationSpeed = 3000f;
+        private float _currentPropSpeed;
 
         private Rigidbody _rb;
 
         private void Start()
         {
             if (!_rb) _rb = GetComponentInParent<Rigidbody>();
+        }
+
+        void Update()
+        {
+            if (propellerTransform != null)
+            {
+                float targetSpeed = throttle * maxPropRotationSpeed;
+                _currentPropSpeed = Mathf.Lerp(_currentPropSpeed, targetSpeed, Time.deltaTime * 5f);
+
+                propellerTransform.Rotate(Vector3.forward * _currentPropSpeed * Time.deltaTime);
+            }
         }
 
         void FixedUpdate()

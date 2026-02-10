@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 717131576143434170}
   - component: {fileID: 195928517912726286}
   - component: {fileID: 195928517912726287}
-  - component: {fileID: 195928517912726285}
   m_Layer: 0
   m_Name: cessna172
   m_TagString: Untagged
@@ -77,20 +76,6 @@ MonoBehaviour:
   _cg: {fileID: 1042999081397358367}
   engine: {fileID: 0}
   _surfaces: []
---- !u!136 &195928517912726285
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195928517912726272}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.6
-  m_Height: 6.5
-  m_Direction: 2
-  m_Center: {x: 0, y: -0.45, z: 0.69}
 --- !u!1 &243372540252261121
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b0982fabbd4214fbe55e5e19b1d884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   surfaceArea: 1
   liftCurve:
     serializedVersion: 2
@@ -434,6 +420,7 @@ MonoBehaviour:
   _rb: {fileID: 0}
   type: 1
   inputMultiplier: 1
+  configAngle: 0
 --- !u!1 &1042999079682855550
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,6 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b0982fabbd4214fbe55e5e19b1d884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   surfaceArea: 1.6
   liftCurve:
     serializedVersion: 2
@@ -714,6 +702,7 @@ MonoBehaviour:
   _rb: {fileID: 0}
   type: 0
   inputMultiplier: 1
+  configAngle: 0
 --- !u!1 &1042999079739676719
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,6 +875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b0982fabbd4214fbe55e5e19b1d884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   surfaceArea: 0.71
   liftCurve:
     serializedVersion: 2
@@ -1056,6 +1046,7 @@ MonoBehaviour:
   _rb: {fileID: 0}
   type: 3
   inputMultiplier: 1
+  configAngle: 0
 --- !u!1 &1042999079949327545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,6 +1157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b0982fabbd4214fbe55e5e19b1d884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   surfaceArea: 4.9
   liftCurve:
     serializedVersion: 2
@@ -1336,6 +1328,7 @@ MonoBehaviour:
   _rb: {fileID: 0}
   type: 2
   inputMultiplier: -1
+  configAngle: 0
 --- !u!1 &1042999080067453416
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,6 +1485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b0982fabbd4214fbe55e5e19b1d884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   surfaceArea: 3.8
   liftCurve:
     serializedVersion: 2
@@ -1599,6 +1593,7 @@ MonoBehaviour:
   _rb: {fileID: 0}
   type: 0
   inputMultiplier: 1
+  configAngle: 0
 --- !u!1 &1042999080397289667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1709,6 +1704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b0982fabbd4214fbe55e5e19b1d884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   surfaceArea: 4.9
   liftCurve:
     serializedVersion: 2
@@ -1879,6 +1875,7 @@ MonoBehaviour:
   _rb: {fileID: 0}
   type: 2
   inputMultiplier: 1
+  configAngle: 0
 --- !u!1 &1042999080442660222
 GameObject:
   m_ObjectHideFlags: 0
@@ -2051,6 +2048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b0982fabbd4214fbe55e5e19b1d884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   surfaceArea: 1.6
   liftCurve:
     serializedVersion: 2
@@ -2221,6 +2219,7 @@ MonoBehaviour:
   _rb: {fileID: 0}
   type: 0
   inputMultiplier: 1
+  configAngle: 0
 --- !u!1 &1042999080856050283
 GameObject:
   m_ObjectHideFlags: 0
@@ -2331,6 +2330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b0982fabbd4214fbe55e5e19b1d884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   surfaceArea: 1.6
   liftCurve:
     serializedVersion: 2
@@ -2501,6 +2501,7 @@ MonoBehaviour:
   _rb: {fileID: 0}
   type: 0
   inputMultiplier: 1
+  configAngle: 0
 --- !u!1 &1042999081133451917
 GameObject:
   m_ObjectHideFlags: 0
@@ -2611,6 +2612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b0982fabbd4214fbe55e5e19b1d884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   surfaceArea: 1
   liftCurve:
     serializedVersion: 2
@@ -2781,6 +2783,7 @@ MonoBehaviour:
   _rb: {fileID: 0}
   type: 1
   inputMultiplier: 1
+  configAngle: 0
 --- !u!1 &1042999081212188515
 GameObject:
   m_ObjectHideFlags: 0
@@ -3057,6 +3060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b0982fabbd4214fbe55e5e19b1d884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   surfaceArea: 1.6
   liftCurve:
     serializedVersion: 2
@@ -3227,6 +3231,7 @@ MonoBehaviour:
   _rb: {fileID: 0}
   type: 0
   inputMultiplier: 1
+  configAngle: 0
 --- !u!1 &1042999081529510531
 GameObject:
   m_ObjectHideFlags: 0
@@ -3371,6 +3376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b0982fabbd4214fbe55e5e19b1d884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   surfaceArea: 5.8
   liftCurve:
     serializedVersion: 2
@@ -3478,6 +3484,7 @@ MonoBehaviour:
   _rb: {fileID: 0}
   type: 0
   inputMultiplier: 1
+  configAngle: 0
 --- !u!1 &1155701906770422571
 GameObject:
   m_ObjectHideFlags: 0

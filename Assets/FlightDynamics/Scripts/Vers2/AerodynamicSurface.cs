@@ -8,10 +8,11 @@ namespace FlightDynamics.Vers2
     public class AerodynamicSurface : MonoBehaviour
     {
         #region Fields
+        [Header("Profile Data")]
+        public AerodynamicProfile profile;
+
         [Header("Physics parameters")]
         public float surfaceArea = 1.6f;
-        public AnimationCurve liftCurve = new AnimationCurve();
-        public AnimationCurve dragCurve = new AnimationCurve();
 
         [Header("Control parameters")]
         public float maxDeflectionDeg = 20f;
@@ -23,6 +24,7 @@ namespace FlightDynamics.Vers2
 
         public SurfaceType type = SurfaceType.Wing;
         public float inputMultiplier = 1f;
+        public float configAngle = 0f;
 
         #endregion
 
@@ -45,15 +47,15 @@ namespace FlightDynamics.Vers2
 
             float angleOfAttack = Mathf.Atan2(-localVelocity.y, localVelocity.z) * Mathf.Rad2Deg;
 
-            float effectiveAoA = angleOfAttack;
+            float effectiveAoA = angleOfAttack + configAngle;
 
             if (type != SurfaceType.Wing)
             {
                 effectiveAoA += _currentInput * maxDeflectionDeg;
             }
 
-            float Cl = liftCurve.Evaluate(effectiveAoA);
-            float Cd = dragCurve.Evaluate(effectiveAoA);
+            float Cl = profile.liftCurve.Evaluate(effectiveAoA);
+            float Cd = profile.dragCurve.Evaluate(effectiveAoA);
 
             float dynamicPressure = 0.5f * 1.225f * localVelocity.sqrMagnitude;
 
@@ -80,58 +82,6 @@ namespace FlightDynamics.Vers2
             _currentInput = input;
         }
 
-        #endregion
-
-        #region Editor Context Menu
-
-#if UNITY_EDITOR
-        [ContextMenu("Setup As Fuselage")]
-        public void SetupAsFuselage()
-        {
-            type = SurfaceType.Wing;
-            surfaceArea = 8.0f;
-
-            liftCurve = new AnimationCurve(
-                new Keyframe(-90f, 0f),
-                new Keyframe(-30f, -0.3f),
-                new Keyframe(0f, 0f),
-                new Keyframe(30f, 0.3f),
-                new Keyframe(90f, 0f)
-            );
-
-            dragCurve = new AnimationCurve(
-                new Keyframe(-90f, 1.2f),
-                new Keyframe(-45f, 0.6f),
-                new Keyframe(0f, 0.08f),
-                new Keyframe(45f, 0.6f),
-                new Keyframe(90f, 1.2f)
-            );
-        }
-
-        [ContextMenu("Setup As Default Wing")]
-        public void SetupAsDefaultWing()
-        {
-            type = SurfaceType.Wing;
-            surfaceArea = 1.6f;
-
-            liftCurve = new AnimationCurve(
-                new Keyframe(-90f, 0f),
-                new Keyframe(-15f, -0.6f),
-                new Keyframe(0f, 0.2f),
-                new Keyframe(15f, 1.2f),
-                new Keyframe(20f, 0.5f), // Stall
-                new Keyframe(90f, 0f)
-            );
-
-            dragCurve = new AnimationCurve(
-                new Keyframe(-90f, 1.0f),
-                new Keyframe(-15f, 0.15f),
-                new Keyframe(0f, 0.025f),
-                new Keyframe(15f, 0.15f),
-                new Keyframe(90f, 1.0f)
-            );
-        }
-#endif
         #endregion
     }
 }

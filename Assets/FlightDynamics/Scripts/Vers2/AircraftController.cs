@@ -9,7 +9,6 @@ namespace FlightDynamics.Vers2
         public Transform _cg; // Center of gravity
 
         [Header("References")]
-        public AircraftEngine engine;
         public AerodynamicSurface[] _surfaces;
         private Rigidbody _rb;
 
@@ -40,6 +39,10 @@ namespace FlightDynamics.Vers2
                         break;
                     case SurfaceType.Rudder:
                         surface.SetInput(yaw);
+                        break;
+                    case SurfaceType.Elevon:
+                        float elevonMix = pitch + (roll * surface.inputMultiplier);
+                        surface.SetInput(elevonMix);
                         break;
                 }
             }
