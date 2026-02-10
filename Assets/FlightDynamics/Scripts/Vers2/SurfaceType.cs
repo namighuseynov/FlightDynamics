@@ -2,7 +2,7 @@ namespace FlightDynamics.Vers2
 {
     public enum SurfaceType
     {
-        Wing, Elevator, Aileron
+        Wing, Elevator, Aileron, Rudder, Fuselage
     }
 }
 

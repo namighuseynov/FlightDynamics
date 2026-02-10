@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace FlightDynamics.Vers2
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class AircraftController : MonoBehaviour
     {
         [Header("Balance")]
@@ -23,18 +24,23 @@ namespace FlightDynamics.Vers2
         {
             float pitch = Input.GetAxis("Vertical");
             float roll = Input.GetAxis("Horizontal");
+            float yaw = Input.GetAxis("Rudder");
 
             foreach (var surface in _surfaces)
             {
-                if (surface.isControlSurface)
-                {
-                    if (surface.type == SurfaceType.Elevator)
-                        surface.SetInput(pitch);
+                if (surface.type == SurfaceType.Wing) continue;
 
-                    if (surface.type == SurfaceType.Aileron)
-                    {
-                        surface.SetInput(roll);
-                    }
+                switch (surface.type)
+                {
+                    case SurfaceType.Elevator:
+                        surface.SetInput(pitch);
+                        break;
+                    case SurfaceType.Aileron:
+                        surface.SetInput(roll * surface.inputMultiplier);
+                        break;
+                    case SurfaceType.Rudder:
+                        surface.SetInput(yaw);
+                        break;
                 }
             }
         }
@@ -44,7 +50,7 @@ namespace FlightDynamics.Vers2
             if (_cg == null) return;
 
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(_cg.position, 0.5f);
+            Gizmos.DrawWireSphere(_cg.position, 0.15f);
             Gizmos.DrawLine(_cg.position, _cg.position + Vector3.down * 10f);
 
         }

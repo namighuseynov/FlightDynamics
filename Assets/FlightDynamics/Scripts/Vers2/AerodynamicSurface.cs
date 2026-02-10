@@ -34,7 +34,6 @@ namespace FlightDynamics.Vers2
         );
 
         [Header("Control parameters")]
-        public bool isControlSurface = false;
         public float maxDeflectionDeg = 20f;
 
         [SerializeField] private Rigidbody _rb;
@@ -42,8 +41,8 @@ namespace FlightDynamics.Vers2
 
         private Vector3 liftGizmo;
 
-        public SurfaceType type;
-
+        public SurfaceType type = SurfaceType.Wing;
+        public float inputMultiplier = 1f;
 
         #endregion
 
@@ -67,7 +66,8 @@ namespace FlightDynamics.Vers2
             float angleOfAttack = Mathf.Atan2(-localVelocity.y, localVelocity.z) * Mathf.Rad2Deg;
 
             float effectiveAoA = angleOfAttack;
-            if (isControlSurface)
+
+            if (type != SurfaceType.Wing)
             {
                 effectiveAoA += _currentInput * maxDeflectionDeg;
             }

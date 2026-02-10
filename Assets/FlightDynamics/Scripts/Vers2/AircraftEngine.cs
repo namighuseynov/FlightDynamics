@@ -36,6 +36,7 @@ namespace FlightDynamics.Vers2
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, 0.1f);
             Gizmos.DrawLine(transform.position, transform.position + (transform.forward * thrustMag*0.001f));
         }
     }
