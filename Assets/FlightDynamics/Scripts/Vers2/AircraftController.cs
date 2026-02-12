@@ -26,6 +26,8 @@ namespace FlightDynamics.Vers2
                 _rb.centerOfMass = transform.InverseTransformPoint(_cg.position);
 
             _surfaces = GetComponentsInChildren<AerodynamicSurface>();
+
+            Application.targetFrameRate = 60;
         }
 
         private void Update()
